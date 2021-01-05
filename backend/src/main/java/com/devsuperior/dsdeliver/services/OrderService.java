@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.devsuperior.dsdeliver.dto.ProductDTO;
-import com.devsuperior.dsdeliver.entities.Product;
-import com.devsuperior.dsdeliver.repositories.ProductRepository;
+import com.devsuperior.dsdeliver.dto.OrderDTO;
+import com.devsuperior.dsdeliver.entities.Order;
+import com.devsuperior.dsdeliver.repositories.OrderRepository;
 
 @Service
 public class OrderService {
@@ -19,7 +19,7 @@ public class OrderService {
 	
 	@Transactional(readOnly = true)
 	public List<OrderDTO> findAll() {
-		List<Order> list = repository.findAllByOrderByNameAsc();
+		List<Order> list = repository.findOrderWithProducts();
 		return list.stream().map(x -> new OrderDTO(x)).collect(Collectors.toList());
 	}
 	
