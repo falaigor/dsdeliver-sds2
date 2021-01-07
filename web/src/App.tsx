@@ -1,12 +1,9 @@
-import './styles/global.css';
-import Navbar from './components/Navbar/index';
-import Home from './pages/Home';
+import Routes from './routes';
 
 function App() {
   return (
     <div>
-      <Navbar />
-      <Home />
+      <Routes />
     </div>
   );
 }
