@@ -1,6 +1,21 @@
+import { useEffect, useState } from 'react';
+import api from '../../services/api';
+
+import ProductItem, { Product } from '../../components/ProductItem';
+
 import './style.css';
 
 function Orders() {
+  const [products, setProducts] = useState<Product[]>([]);
+  console.log(products)
+
+  useEffect(() => {
+    api.get(`products`).then(response => {
+      setProducts(response.data);
+    })
+      .catch(error => (console.log(error)));
+  }, []);
+
   return (
     <div className="orders-container">
       <header>
@@ -19,7 +34,15 @@ function Orders() {
         </div>
       </header>
 
-      <main></main>
+      <main>
+        <div className="orders-list-container">
+          <div className="orders-list-items">
+            {products.map(product => (
+              <ProductItem key={product.id} product={product} />
+            ))}
+          </div>
+        </div>
+      </main>
     </div>
   );
 }
