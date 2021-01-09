@@ -57,7 +57,7 @@ function Orders() {
   }
 
   useEffect(() => {
-    api.get(`products`).then(response => {
+    api.get(`/products`).then(response => {
       setProducts(response.data);
     })
       .catch(error => (console.log(error)));

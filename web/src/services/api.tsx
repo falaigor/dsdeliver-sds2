@@ -2,7 +2,7 @@ import axios from 'axios';
 import { OrderPayload } from '../pages/Orders/types';
 
 const api = axios.create({
-  baseURL: 'https://igor-sds2.herokuapp.com/',
+  baseURL: process.env.REACT_APP_API_URL,
 })
 
 const mapboxToken = process.env.REACT_APP_ACCESS_TOKEN_MAP_BOX;
@@ -12,7 +12,7 @@ export function fetchLocalMapBox(local: string) {
 }
 
 export function saveOrder(payload: OrderPayload) {
-  return axios.post(`${api}orders`, payload);
+  return axios.post(`${api}/orders`, payload);
 }
 
 export default api;
