@@ -38,7 +38,7 @@
 }
 
 .orders-container header .orders-steps-content .steps-items .steps-number {
-  font-size: 2.rem;
+  font-size: 2rem;
   font-style: normal;
   font-weight: bold;
   line-height: 3.3rem;
@@ -50,6 +50,7 @@
 .orders-container main {
   display: flex;
   justify-content: center;
+  flex-direction: column;
 }
 
 .orders-container main .orders-list-container {
@@ -66,13 +67,12 @@
   justify-content: space-between;
 }
 
-
-.order-location-container {
+.orders-location-container {
   display: flex;
   justify-content: center;
 }
 
-.order-location-content {
+.orders-location-container .orders-location-content {
   width: 70%;
   margin: 30px 0 120px 0;
   padding: 20px 0;
@@ -82,7 +82,7 @@
   border-radius: 10px;
 }
 
-.filter-container {
+.orders-location-container .orders-location-content .filter-container {
   display: flex;
   justify-content: center;
   margin-top: 20px;
@@ -105,7 +105,7 @@
   z-index: 0;
 }
 
-.order-location-title {
+.orders-location-container .orders-location-content h3 {
   font-weight: bold;
   font-size: 18px;
   line-height: 25px;

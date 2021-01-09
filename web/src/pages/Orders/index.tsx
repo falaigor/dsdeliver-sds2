@@ -1,13 +1,23 @@
 import { useEffect, useState } from 'react';
 import api from '../../services/api';
-
 import ProductItem, { Product } from '../../components/ProductItem';
 
+import OrderLocation from '../../components/OrderLocation';
 import './style.css';
+import { OrderLocationdata } from '../../components/OrderLocation/index';
+
+export interface Place {
+  label?: string;
+  value?: string;
+  position: {
+    lat: number;
+    lng: number;
+  }
+}
 
 function Orders() {
+  const [orderLocation, setOrderLocation] = useState<OrderLocationdata>();
   const [products, setProducts] = useState<Product[]>([]);
-  console.log(products)
 
   useEffect(() => {
     api.get(`products`).then(response => {
@@ -42,6 +52,8 @@ function Orders() {
             ))}
           </div>
         </div>
+
+        <OrderLocation onChangeLocation={location => setOrderLocation(location)} />
       </main>
     </div>
   );
