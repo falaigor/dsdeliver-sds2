@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import api, { saveOrder } from '../../services/api';
+import { fetchProducts, saveOrder } from '../../services/api';
 import { Product, OrderLocationData } from './types';
 import { checkIsSelected } from './helpers';
 
@@ -57,7 +57,7 @@ function Orders() {
   }
 
   useEffect(() => {
-    api.get(`/products`).then(response => {
+    fetchProducts().then(response => {
       setProducts(response.data);
     })
       .catch(error => (console.log(error)));
