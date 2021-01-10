@@ -1,19 +1,56 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Platform } from 'react-native';
+import { Order } from '../types';
+import dayjs from 'dayjs';
+import 'dayjs/locale/pt-br';
+import relativeTime from 'dayjs/plugin/relativeTime'
 
-export default function OrderCard() {
+import "intl";
+import "intl/locale-data/jsonp/pt-BR.js";
+
+if (Platform.OS === "android") {
+    if (typeof (Intl as any).disableRegExpRestore === "function") {
+        (Intl as any).disableRegExpRestore();
+    }
+}
+
+dayjs.locale('pt-br');
+dayjs.extend(relativeTime);
+
+type Props = {
+  order: Order 
+}
+
+function dateFromNow(date: string) {
+  return dayjs(date).fromNow();
+}
+
+function formatPrice(price: number) {
+  const formatter = new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+    minimumFractionDigits: 2
+  })
+  return formatter.format(price)
+}
+
+
+
+export default function OrderCard({ order }: Props) {
   return (
     <>
       <View style={styles.container}>
         <View style={styles.header}>
-          <Text style={styles.orderName}>Pedido 1</Text>
-          <Text style={styles.orderPrice}>R$ 50,00</Text>
+          <Text style={styles.orderName}>Pedido {order.id}</Text>
+          <Text style={styles.orderPrice}>{formatPrice(order.total)}</Text>
         </View>
-        <Text style={styles.text}>Há 30 minutos</Text>
+        <Text style={styles.text}>{dateFromNow(order.moment)}</Text>
         <View style={styles.productsList}>
-          <Text style={styles.text}>Pizza Calabresa</Text>
-          <Text style={styles.text}>Pizza Calabresa</Text>
-          <Text style={styles.text}>Pizza Calabresa</Text>
+          {order.products.map(product => (
+            <Text key={product.id} style={styles.text}>
+              {product.name}
+            </Text>
+          ))}
         </View>
       </View>
     </>
@@ -23,7 +60,7 @@ export default function OrderCard() {
 const styles = StyleSheet.create(
   {
     container: {
-      marginTop: '10%',
+      marginTop: '5%',
       marginLeft: '2%',
       marginRight: '2%',
       marginBottom: '2%',
