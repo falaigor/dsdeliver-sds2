@@ -100,8 +100,8 @@ public class Order implements Serializable {
 	public Double getTotal() {
 		double sum = 0.0;
 		for (Product p : products) {
-			sum =+ p.getPrice()
-;		}
+			sum =+ p.getPrice();
+		}
 		
 		return sum;
 	}
