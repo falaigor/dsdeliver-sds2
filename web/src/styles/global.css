@@ -26,6 +26,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow-x: hidden;
 }
 
 body,
@@ -34,11 +35,6 @@ button,
 textarea {
   font: 500 1.6rem Open Sans;
   color: var(--secondary-color);
-}
-
-.container {
-  width: 90vw;
-  max-width: 700px;
 }
 
 @media (min-width: 700px) {
