@@ -27,14 +27,9 @@ DS Deliver é uma aplicação de gerencimaneto de pedidos para entrega. Desenvol
  ```
  git clone https://github.com/falaigor/dsdeliver-sdsd2
  ```
- 
-**Go to repository folder**
-- `docker-compose up` (in Backend)
-- `yarn start` (in Frontend)
-
 A instalçao é bem simples:
 ```
-$ yarn
+$ yarn install
 ```
 Or:
 ```
@@ -52,10 +47,8 @@ Neste arquivo você pode configurar a url da API. Renomeie o `.env.example` no d
 
 key|description|default
 ---|---|---
-REACT_APP_MAPBOX_TOKEN|Token do MAPBOX|`Adiconar o token gerado`
-
-### API
-Inicie a [API] (https://github.com/falaigor/petlove-api) (consulte seu README para obter mais informações). Em caso de qualquer mudança no `port` ou` host` da API, lembre-se de atualizar o [`.env`] (# env) também.
+REACT_APP_ACCESS_TOKEN_MAP_BOX|Token do MAPBOX|`Adiconar o token gerado`
+REACT_APP_API_URL|URL do Backend|`Adiconar URL de acesso do backend`
 
 # Uso
 Para iniciar o aplicativo, execute:
