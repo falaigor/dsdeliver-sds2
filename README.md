@@ -14,7 +14,7 @@
 
 ## Projeto
 
-DS Deliver é uma aplicação de gerencimaneto de pedidos para entrega. Desenvolvida na Semana DevSuperior.
+DS Deliver é uma aplicação de gerenciamento de pedidos para entrega. Desenvolvida na Semana DevSuperior.
 
 ## Índice
 * [Instalação](#installing)
